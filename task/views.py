@@ -34,7 +34,7 @@ def Index(request):
 
 def Nutrient(request):
     quantity = request.POST['quantity']
-
+ 
     spinach = [23, 3, 0.3, 8100, 93]
 
     if quantity.isdigit():
