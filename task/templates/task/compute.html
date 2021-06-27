@@ -3,6 +3,7 @@
 <a href="{% url 'dashboard' %}"> Go Back</a>
 <form action="nutri" method="POST">
   {% csrf_token %} 
+  Enter Food ID: <input type="text" name="foodid" />
   Enter Quantity: <input type="text" name="quantity" />
   <input type="submit" />
 </form>
