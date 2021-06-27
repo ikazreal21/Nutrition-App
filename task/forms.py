@@ -5,5 +5,5 @@ from .models import *
 
 class NutrientsForm(forms.ModelForm):
     class Meta:
-        model = Nutrients
+        model = Nutrient
         fields = "__all__"
