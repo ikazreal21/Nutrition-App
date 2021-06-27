@@ -31,21 +31,32 @@ def Calc(request):
 
 
 def Nutrients(request):
-    quantity = request.POST['quantity']
-    spinach = Nutrient.objects.get(pk=1)
-    spinach = [spinach.cal, spinach.protien,
-               spinach.fat, spinach.vita, spinach.calcium]
+    try:
+        quantity = request.POST['quantity']
+        pk = request.POST['foodid']
+        if pk.isdigit():
+            food = Nutrient.objects.get(id=pk)
+            food1 = [food.cal, food.protien,
+                       food.fat, food.vita, food.calcium]
+            if quantity.isdigit():
+                quanti = int(quantity)
+                totalspin = Compute().compute_nut(food1, quanti)
+                total = totalspin[0]
 
-    if quantity.isdigit():
-        quanti = int(quantity)
-        totalspin = Compute().compute_nut(spinach, quanti)
-        total = totalspin[2]
+                return render(request, "task/compute.html", {"result": total})
+            elif not quantity:
+                return redirect('food')
+            else:
+                res = "Only digits are allowed"
+                return render(request, "task/compute.html", {"result": res})
+        elif not pk:
+                return redirect('food')
+        else:
+            res = "Only digits are allowed"
+            return render(request, "task/compute.html", {"result": res})
 
-        return render(request, "task/compute.html", {"result": total})
-    elif not quantity:
-        return redirect('food')
-    else:
-        res = "Only digits are allowed"
+    except  Nutrient.DoesNotExist:
+        res = "Do not in the Foodlist"
         return render(request, "task/compute.html", {"result": res})
 
     # nutri = Nutrients.objects.all()
@@ -61,4 +72,38 @@ def Nutrients(request):
 
 
 def Foodlist(request):
-    return render(request, "task/foodlist.html")
+    food = Nutrient.objects.all()
+    return render(request, "task/foodlist.html", {'food': food})
+
+
+def AddFood(request):
+    food = Nutrient.objects.all()
+    foodform = NutrientsForm()
+    if request.method == 'POST':
+        foodform = NutrientsForm(request.POST)
+        if foodform.is_valid():
+            foodform.save()
+        return redirect("foodlist")
+    context = {'form': foodform, 'food': food}
+    return render(request, "task/create.html", context)
+
+def UpFood(request, pk):
+    food = Nutrient.objects.get(id=pk)
+    foodform = NutrientsForm(instance=food)
+
+    if request.method == 'POST':
+        foodform = NutrientsForm(request.POST, instance=food)
+        if foodform.is_valid():
+            foodform.save()
+        return redirect('foodlist')
+    return render(request, "task/update.html", {'form': foodform})
+
+
+def DelFood(request, pk):
+    food = Nutrient.objects.get(id=pk)
+    if request.method == 'POST':
+        food.delete()
+        return redirect('foodlist')
+    return render(request, "task/delete.html", {'food': food})
+
+
