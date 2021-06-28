@@ -1,11 +1,11 @@
 {% extends 'task/main.html' %}
 {% block content %}
-<a href="{% url 'dashboard' %}"> Go Back</a>
+<a href="{% url 'dashboard' %}" class="button"> Go Back</a>
 <form action="nutri" method="POST">
   {% csrf_token %} 
   Enter Food ID: <input type="text" name="foodid" />
   Enter Quantity: <input type="text" name="quantity" />
-  <input type="submit" />
+  <button type="submit" class="button">Compute</button>
 </form>
 <p>{{result}}</p>
 {% endblock %}
