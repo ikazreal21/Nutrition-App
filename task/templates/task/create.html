@@ -1,11 +1,11 @@
 {% extends 'task/main.html' %}
 {% block content %}
-<a href="{% url 'foodlist' %}">Go Back</a>
-<p>Add Food</p>
+<a href="{% url 'foodlist' %}" class="button">Go Back</a>
+<h1>Add Food</h1>
 <form action="" method="POST">
 	{% csrf_token %}
 	{{form.as_p}}
-	<button type="submit">Add Food</button>
+	<button type="submit" class="button">Add Food</button>
 	
 </form>
 {% endblock %}
