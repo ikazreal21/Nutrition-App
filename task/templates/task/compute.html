@@ -1,11 +1,162 @@
 {% extends 'task/main.html' %}
 {% block content %}
 <a href="{% url 'dashboard' %}" class="button"> Go Back</a>
-<form action="nutri" method="POST">
-  {% csrf_token %} 
-  Enter Food ID: <input type="text" name="foodid" />
-  Enter Quantity: <input type="text" name="quantity" />
-  <button type="submit" class="button">Compute</button>
-</form>
-<p>{{result}}</p>
+<div class="section">
+ <div class="child1">
+    <form class="form-signin" action="nutri" method="POST">
+    {% csrf_token %} 
+      <div class="head">
+          <table>
+          <tr>
+            <th>Food Number</th>
+            <th>Food Quantity</th>
+            <th>Food Number</th>
+          </tr>
+        </table>
+      </div>
+      <div class="content">
+         <table>
+          <tr>
+            <td>1</td>
+            <td>Select Food:
+                <select name="food">
+                  <option selected="selected" disabled>Select Food:</option>  
+                  {% for i in food %}
+                  <option value="{{i.id}}">{{i.foodname}}</option>
+                  {% endfor %}
+                </select>
+            </td>
+            <td>Enter Quantity: <input class="form-styling" type="text" name="quantity" />
+            </td>
+          </tr>
+           <tr>
+            <td>2</td>
+            <td>Select Food:
+                <select name="food">
+                  <option selected="selected" disabled>Select Food:</option>  
+                  {% for i in food %}
+                  <option value="{{i.id}}">{{i.foodname}}</option>
+                  {% endfor %}
+                </select>
+            </td>
+            <td>Enter Quantity: <input class="form-styling" type="text" name="quantity" />
+            </td>
+          </tr>
+         <tr>
+            <td>3</td>
+            <td>Select Food:
+                <select name="food">
+                  <option selected="selected" disabled>Select Food:</option>  
+                  {% for i in food %}
+                  <option value="{{i.id}}">{{i.foodname}}</option>
+                  {% endfor %}
+                </select>
+            </td>
+            <td>Enter Quantity: <input class="form-styling" type="text" name="quantity" />
+            </td>
+          </tr>
+           <tr>
+            <td>4</td>
+            <td>Select Food:
+                <select name="food">
+                  <option selected="selected" disabled>Select Food:</option>  
+                  {% for i in food %}
+                  <option value="{{i.id}}">{{i.foodname}}</option>
+                  {% endfor %}
+                </select>
+            </td>
+            <td>Enter Quantity: <input class="form-styling" type="text" name="quantity" />
+            </td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Select Food:
+                <select name="food">
+                  <option selected="selected" disabled>Select Food:</option>  
+                  {% for i in food %}
+                  <option value="{{i.id}}">{{i.foodname}}</option>
+                  {% endfor %}
+                </select>
+            </td>
+            <td>Enter Quantity: <input class="form-styling" type="text" name="quantity" />
+            </td>
+          </tr>
+           <tr>
+            <td>6</td>
+            <td>Select Food:
+                <select name="food">
+                  <option selected="selected" disabled>Select Food:</option>  
+                  {% for i in food %}
+                  <option value="{{i.id}}">{{i.foodname}}</option>
+                  {% endfor %}
+                </select>
+            </td>
+            <td>Enter Quantity: <input class="form-styling" type="text" name="quantity" />
+            </td>
+          </tr>
+           <tr>
+            <td>7</td>
+            <td>Select Food:
+                <select name="food">
+                  <option selected="selected" disabled>Select Food:</option>  
+                  {% for i in food %}
+                  <option value="{{i.id}}">{{i.foodname}}</option>
+                  {% endfor %}
+                </select>
+            </td>
+            <td>Enter Quantity: <input class="form-styling" type="text" name="quantity" />
+            </td>
+          </tr>
+           <tr>
+            <td>8</td>
+            <td>Select Food:
+                <select name="food">
+                  <option selected="selected" disabled>Select Food:</option>  
+                  {% for i in food %}
+                  <option value="{{i.id}}">{{i.foodname}}</option>
+                  {% endfor %}
+                </select>
+            </td>
+            <td>Enter Quantity: <input class="form-styling" type="text" name="quantity" />
+            </td>
+          </tr>
+           <tr>
+            <td>9</td>
+            <td>Select Food:
+                <select name="food">
+                  <option selected="selected" disabled>Select Food:</option>  
+                  {% for i in food %}
+                  <option value="{{i.id}}">{{i.foodname}}</option>
+                  {% endfor %}
+                </select>
+            </td>
+            <td>Enter Quantity: <input class="form-styling" type="text" name="quantity" />
+            </td>
+          </tr>
+           <tr>
+            <td>10</td>
+            <td>Select Food:
+                <select name="food">
+                  <option selected="selected" disabled>Select Food:</option>  
+                  {% for i in food %}
+                  <option value="{{i.id}}">{{i.foodname}}</option>
+                  {% endfor %}
+                </select>
+            </td>
+            <td>Enter Quantity: <input class="form-styling" type="text" name="quantity" />
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="btn-flex"> 
+        <button type="submit" class="btn">Compute</button>
+        <button type="reset" class="btn">Reset</button>
+      </div>
+  </form>
+ </div>
+ <div class="child2">
+    <h1>Result</h1>
+    <h1>{{result}}</h1>
+ </div>
+</div>
 {% endblock %}
