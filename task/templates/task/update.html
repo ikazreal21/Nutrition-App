@@ -1,11 +1,26 @@
-{% extends 'task/main.html' %}
-{% block content %}
-<h1>Update</h1>
+{% extends 'task/main.html' %} {% block content %}
 <a href="{% url 'foodlist' %}" class="button">Food List</a>
-<form method="POST" action="">
-	{% csrf_token %} 
-	{{form.as_p}}
-	<button type="submit" class="button">Save</button>	
-</form>
+<h1>Update</h1>
+<div class="section-delete">
+  <form method="POST" action="">
+    {% csrf_token %}
+    <label>Food Name: </label>
+    {{form.foodname}}
+    <label>Calorie: </label>
+    {{form.cal}}
+    <label>Protien: </label>
+    {{form.protien}}
+    <label>Fat: </label>
+    {{form.fat}}
+    <label>Vitamin A: </label>
+    {{form.vita}}
+    <label>Calcium: </label>
+    {{form.calcium}}
+    <div class="btn-flex">
+      <button type="submit" class="btn">Save</button>
+      <button type="reset" class="btn">Reset</button>
+    </div>
+  </form>
+</div>
 
 {% endblock %}
