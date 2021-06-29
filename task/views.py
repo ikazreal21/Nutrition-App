@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.utils.datastructures import MultiValueDictKeyError
 from django.http import HttpResponse
 from .models import *
 from .forms import *
@@ -27,17 +28,22 @@ def Index(request):
 
 
 def Calc(request):
-    return render(request, "task/compute.html")
+    food = Nutrient.objects.all()
+    return render(request, "task/compute.html", {"food": food})
 
 
 def Nutrients(request):
     try:
-        quantity = request.POST['quantity']
-        pk = request.POST['foodid']
+        try:
+            quantity = request.POST['quantity']
+            pk = request.POST['food']
+        except MultiValueDictKeyError:
+            return redirect('food')
         if pk.isdigit():
             food = Nutrient.objects.get(id=pk)
             food1 = [food.cal, food.protien,
                        food.fat, food.vita, food.calcium]
+            # return render(request, "task/compute.html", {"result": food})
             if quantity.isdigit():
                 quanti = int(quantity)
                 totalspin = Compute().compute_nut(food1, quanti)

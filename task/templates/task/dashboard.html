@@ -1,8 +1,8 @@
 {% extends 'task/main.html' %}
 {% block content %}
-<div>
-	<h1>dashboard</h1>
+<h1>dashboard</h1>
+<div class="center">
 	<a href="{% url 'food' %}" class="button">Calculation</a>
-	<a href="{% url 'foodlist'%}" class="button">Food List</a>
+	<a href="{% url 'foodlist' %}" class="button">Food List</a>
 </div>
-{% endblock %}
+{% endblock %}	
