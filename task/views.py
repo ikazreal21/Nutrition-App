@@ -1,6 +1,14 @@
 from django.shortcuts import render, redirect
 from django.utils.datastructures import MultiValueDictKeyError
 from django.http import HttpResponse
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+
+from django.contrib.auth.decorators import login_required
+
+
+
 from .models import *
 from .forms import *
 
@@ -23,15 +31,58 @@ def is_number(s):
         return False
 
 
+def registerPage(request):
+    if request.user.is_authenticated:
+        return redirect('dashboard')
+    else:
+        form = CreateUserForm()
+        if request.method == 'POST':
+            form = CreateUserForm(request.POST)
+            if form.is_valid():
+                form.save()
+                user = form.cleaned_data.get('username')
+                messages.success(request, "Account Created For " + user)
+                return redirect('login')
+
+        context = {"form": form}
+        return render(request, "task/register.html", context)
+
+
+
+def loginPage(request):
+    if request.user.is_authenticated:
+        return redirect('dashboard')
+    else:
+        if request.method == 'POST':
+           username = request.POST.get('username')
+           password = request.POST.get('password')
+           user = authenticate(request, username=username, password=password)
+           if user is not None:
+            login(request, user)
+            return redirect('dashboard')
+           else:
+            messages.info(request, "Username or Password is Incorrect")
+
+    context = {}
+    return render(request, "task/login.html", context)
+
+
+def logoutPage(request):
+    logout(request)
+    return redirect('login')
+
+
+@login_required(login_url='login')
 def Index(request):
     return render(request, "task/dashboard.html")
 
 
+@login_required(login_url='login')
 def Calc(request):
-    food = Nutrient.objects.all()
+    food = Nutrient.objects.filter(user=request.user)
     return render(request, "task/compute.html", {"food": food})
 
-
+@login_required(login_url='login')
 def Nutrients(request):
     try:
         quantity1 = request.POST['quantity1']
@@ -150,24 +201,24 @@ def Nutrients(request):
     # context = {'form': nutriform, 'nutri': nutri}
     # return render(request, "task/food.html", context)
 
-
+@login_required(login_url='login')
 def Foodlist(request):
-    food = Nutrient.objects.all()
+    food = Nutrient.objects.filter(user=request.user)
     return render(request, "task/foodlist.html", {'food': food})
 
-
+@login_required(login_url='login')
 def AddFood(request):
-    food = Nutrient.objects.all()
     foodform = NutrientsForm()
     if request.method == 'POST':
         foodform = NutrientsForm(request.POST)
         if foodform.is_valid():
+            foodform.save(commit=False).user = request.user
             foodform.save()
         return redirect("foodlist")
-    context = {'form': foodform, 'food': food}
+    context = {'form': foodform}  
     return render(request, "task/create.html", context)
 
-
+@login_required(login_url='login')
 def UpFood(request, pk):
     food = Nutrient.objects.get(id=pk)
     foodform = NutrientsForm(instance=food)
@@ -179,7 +230,7 @@ def UpFood(request, pk):
         return redirect('foodlist')
     return render(request, "task/update.html", {'form': foodform})
 
-
+@login_required(login_url='login')
 def DelFood(request, pk):
     food = Nutrient.objects.get(id=pk)
     if request.method == 'POST':
