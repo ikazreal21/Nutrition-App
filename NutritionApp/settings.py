@@ -24,9 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-gyww!tz8e7_+s0@9*qo%-jp(r4@4hg2slet04nfnr^21mvx+(2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "nutrition-app-pup.herokuapp.com"]
+# ALLOWED_HOSTS = ["127.0.0.1", "nutrition-app-pup.herokuapp.com"]
+
+ALLOWED_HOSTS = []
+
 
 
 # Application definition
@@ -44,7 +47,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
 
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
 
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -122,12 +125,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+# STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 STATIC_URL = '/static/'
 
 
-MEDIA_URL = "/img/"
+MEDIA_URL = "/image/"
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
