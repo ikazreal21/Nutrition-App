@@ -89,6 +89,11 @@ DATABASES = {
 }
 
 
+import dj_database_url
+DATABASES['default'] =  dj_database_url.parse('postgres://daecvgwrdjehiq:96f3add2ad678c263d0096fcfe1ecca6179b93f76a05f7634d2a40836873fbf0@ec2-35-171-57-132.compute-1.amazonaws.com:5432/d5v2r6h119319k', conn_max_age=600)
+
+
+
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -135,6 +140,9 @@ MEDIA_URL = "/image/"
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+
+
 
 
 # Default primary key field type
