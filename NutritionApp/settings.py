@@ -28,6 +28,9 @@ DEBUG = False
 
 ALLOWED_HOSTS = ["127.0.0.1", "nutrition-app-pup.herokuapp.com"]
 
+# ALLOWED_HOSTS = []
+
+
 
 # Application definition
 
@@ -127,7 +130,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATIC_URL = '/static/'
 
 
-MEDIA_URL = "/img/"
+MEDIA_URL = "/image/"
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
@@ -138,3 +141,13 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# SMTP Config
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'zakijoaquin21@gmail.com'
+EMAIL_HOST_PASSWORD = 'zakizakizaki21'
