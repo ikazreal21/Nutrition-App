@@ -1,0 +1,23 @@
+{% extends 'task/main.html' %} 
+{% block content %}
+<a href="{% url 'login' %}" class="button">Go Back</a>
+<h1>Register</h1>
+<div class="section-delete">
+	<form action="" method="POST">
+	{% csrf_token %}
+	 <label>User Name: </label>
+	{{form.username}}
+	 <label>Email: </label>
+	{{form.email}}
+	 <label>Password: </label>
+	{{form.password1}}
+	 <label>Confirm Password: </label>
+	{{form.password2}}
+	<p>{{form.errors}}</p>
+	 <div class="btn-flex">
+      <button type="submit" class="btn">Register</button>
+      <button type="reset" class="btn">Reset</button>
+    </div>
+</form>
+</div>
+{% endblock %}

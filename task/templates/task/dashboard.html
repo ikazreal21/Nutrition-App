@@ -4,5 +4,6 @@
 <div class="center">
 	<a href="{% url 'food' %}" class="button">Calculation</a>
 	<a href="{% url 'foodlist' %}" class="button">Food List</a>
+	<a href="{% url 'logout' %}" class="button">Logout, {{request.user}}</a>
 </div>
 {% endblock %}	
