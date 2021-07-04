@@ -12,7 +12,7 @@ urlpatterns = [
 
     # App 
     path('', views.Index, name='dashboard'),
-    path('compute', views.Calc,  name="food"),
+    path('compute/', views.Calc,  name="food"),
     path('nutri', views.Nutrients, name="nutri"),
     path('foodlist/', views.Foodlist, name="foodlist"),
     path('addfood/', views.AddFood, name="addfood"),

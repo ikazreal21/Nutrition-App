@@ -220,7 +220,7 @@ def AddFood(request):
 
 @login_required(login_url='login')
 def UpFood(request, pk):
-    food = Nutrient.objects.get(id=pk)
+    food = Nutrient.objects.get(rndid=pk)
     foodform = NutrientsForm(instance=food)
 
     if request.method == 'POST':
@@ -232,7 +232,7 @@ def UpFood(request, pk):
 
 @login_required(login_url='login')
 def DelFood(request, pk):
-    food = Nutrient.objects.get(id=pk)
+    food = Nutrient.objects.get(rndid=pk)
     if request.method == 'POST':
         food.delete()
         return redirect('foodlist')
