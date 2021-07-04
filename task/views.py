@@ -82,6 +82,8 @@ def Calc(request):
     food = Nutrient.objects.filter(user=request.user)
     return render(request, "task/compute.html", {"food": food})
 
+
+# Need to Refactor To Many Repeating Codes
 @login_required(login_url='login')
 def Nutrients(request):
     try:
