@@ -7,7 +7,10 @@ from django.contrib.auth import authenticate, login, logout
 
 from django.contrib.auth.decorators import login_required
 
+import requests, zulu, os
 
+from dotenv import load_dotenv
+load_dotenv()
 
 from .models import *
 from .forms import *
@@ -74,7 +77,27 @@ def logoutPage(request):
 
 @login_required(login_url='login')
 def Index(request):
-    return render(request, "task/dashboard.html")
+    APIKEY = database_url = os.environ.get('APIKEY')
+    newsresponse = requests.get(url='https://newsapi.org/v2/top-headlines?country=ph&category=health&apiKey={}'.format(APIKEY))
+    newsresponse = newsresponse.json()
+    if newsresponse["status"] != "ok":
+        return HttpResponse("<h1>Request Failed</h1>")
+    newsresponse = newsresponse['articles']
+
+    context = {
+        "data": []
+    }
+
+    for i in newsresponse:
+        dt = zulu.parse(i["publishedAt"])
+        context["data"].append({
+            "title": i["title"],
+            "description": "" if i["description"] is None else i["description"],
+            "url": i["url"],
+
+            "publishedat": dt.time_from_now()
+        })
+    return render(request, "task/dashboard.html", context)
 
 
 @login_required(login_url='login')

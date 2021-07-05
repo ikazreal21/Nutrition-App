@@ -12,6 +12,12 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+load_dotenv()
+
+DATABASE_URL = database_url = os.environ.get('DATABASE_URL')
+PASSWORD = database_url = os.environ.get('PASSWORD')
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,7 +30,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-gyww!tz8e7_+s0@9*qo%-jp(r4@4hg2slet04nfnr^21mvx+(2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["127.0.0.1", "nutrition-app-pup.herokuapp.com"]
 
@@ -90,7 +96,7 @@ DATABASES = {
 
 
 import dj_database_url
-DATABASES['default'] =  dj_database_url.parse('postgres://daecvgwrdjehiq:96f3add2ad678c263d0096fcfe1ecca6179b93f76a05f7634d2a40836873fbf0@ec2-35-171-57-132.compute-1.amazonaws.com:5432/d5v2r6h119319k', conn_max_age=600)
+DATABASES['default'] =  dj_database_url.parse(DATABASE_URL, conn_max_age=600)
 
 
 
@@ -158,4 +164,4 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'zakijoaquin21@gmail.com'
-EMAIL_HOST_PASSWORD = 'zakizakizaki21'
+EMAIL_HOST_PASSWORD = PASSWORD
