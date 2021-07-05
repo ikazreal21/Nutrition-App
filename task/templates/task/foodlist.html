@@ -1,9 +1,9 @@
 {% extends 'task/main.html' %} 
 {% block content %}
-<a href="{% url 'dashboard' %}" class="button">Go Back</a>
-<a href="{% url 'addfood' %}" class="button">Add Food</a>
+<a href="{% url 'addfood' %}" class="button" style="margin-left: 40px;">Add Food</a>
 <h1>Food List</h1>
-<div class="header">
+<div class="tb-res">
+  <div class="header">
   <table cellpadding="0" cellspacing="0" border="0">
     <tr>
       <th scope="col">#</th>
@@ -38,6 +38,7 @@
     </tr>
     {% endfor %}
   </table>
+</div>
 </div>
 
 {% endblock %}

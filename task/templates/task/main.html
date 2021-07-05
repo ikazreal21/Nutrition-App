@@ -8,12 +8,39 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="{% static 'css/index.css' %}"
+      href="{% static 'css/main.css' %}"
     />
     <link rel="icon" href="{% static '/image/favicon.ico' %}" type="image/x-icon">
+     <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <!-- <script src="https://kit.fontawesome.com/a076d05399.js"></script> -->
     <title>Nutrition App</title>
   </head>
   <body>
+  {% if user.is_authenticated %}
+  <div class="wrapper">
+      <input type="checkbox" id="btn" hidden>
+      <label for="btn" class="menu-btn">
+        <i class="fas fa-bars"></i>
+        <i class="fas fa-times"></i>
+      </label>
+     <div class="sidenav" id="sidebar">
+      <h1>Dashboard</h1>
+      <a href="{% url 'dashboard' %}">Home</a>
+      <a href="{% url 'foodlist' %}">Food List</a>
+      <a href="{% url 'food' %}" style="padding-top: 30px;">Calculation</a>
+        <div class="lgout" style="padding-top: 15rem;">
+            <a href="{% url 'logout' %}">Logout, {{request.user}}</a>
+        </div>
+      </div>
+  </div>
+  {% else %}
+  <p></p>
+  {% endif %}
     {% block content %} 
     {% endblock %}
   </body>

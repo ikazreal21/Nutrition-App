@@ -12,6 +12,13 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+load_dotenv()
+
+DATABASE_URL = database_url = os.environ.get('DATABASE_URL')
+PASSWORD = database_url = os.environ.get('PASSWORD')
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -89,6 +96,11 @@ DATABASES = {
 }
 
 
+import dj_database_url
+
+DATABASES['default'] =  dj_database_url.parse(DATABASE_URL, conn_max_age=600)
+
+
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -150,4 +162,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'zakijoaquin21@gmail.com'
-EMAIL_HOST_PASSWORD = 'zakizakizaki21'
+EMAIL_HOST_PASSWORD = PASSWORD
+
+
+

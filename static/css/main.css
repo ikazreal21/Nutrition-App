@@ -174,7 +174,7 @@ td {
 }
 
 .center {
-  padding-top: 15rem;
+  padding-top: 1rem;
   text-align: center;
 }
 
@@ -279,6 +279,208 @@ label {
   text-transform: uppercase;
 }
 
+
+
+
+
+
+.news-card {
+  background: rgb(123, 236, 240);
+  border-radius: 15px;
+  display: inline-block;
+  height: relative;
+  margin: 1rem;
+  position: relative;
+  width: 300px;
+}
+
+.news-card-1 {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.news-card-1:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+
+
+
+
+.container{
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+
+}
+
+.container .description {
+    padding: 20px;
+    position: relative;
+}
+
+.container .description h2 {
+    font-size: 20px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: black;
+    margin-top: 2px;
+}
+
+.container p {
+    position: relative;
+    font-size: 1rem;
+    margin: 1rem 0 1rem;
+    color: black;
+    font-weight: 300;
+}
+
+.container small {
+    position: relative;
+    font-size: 1rem;
+    margin: 1rem 0 1rem;
+    color: darkblue;
+    font-weight: 400;
+}
+
+
+.sidenav a {
+  padding: 6px 6px 6px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: black;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+  padding-left: 50px;
+}
+
+.sidenav a{
+    padding-top: 20px;
+    line-height: 50px;
+    transition: .5s;
+}
+
+
+.wrapper .menu-btn{
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  background: rgba(0, 0, 80, 0.4);
+  color: #fff;
+  height: 45px;
+  width: 45px;
+  z-index: 9999;
+  border: 1px solid lightblue;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+#btn:checked ~ .menu-btn{
+  left: 200px;
+}
+.wrapper .menu-btn i{
+  position: absolute;
+  transform: ;
+  font-size: 23px;
+  transition: all 0.3s ease;
+}
+.wrapper .menu-btn i.fa-times{
+  opacity: 0;
+}
+#btn:checked ~ .menu-btn i.fa-times{
+  opacity: 1;
+  transform: rotate(-180deg);
+}
+#btn:checked ~ .menu-btn i.fa-bars{
+  opacity: 0;
+  transform: rotate(180deg);
+}
+
+#sidebar{
+  border-right: 1px solid lightblue;
+  height: 100%;
+  width: 190px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 10px;
+  background: rgba(0, 0, 80, 0.4);
+  overflow-x: hidden;
+  position: fixed;
+  overflow: hidden;
+  left: -270px;
+  transition: all 0.3s ease;
+}
+#btn:checked ~ #sidebar{
+  left: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+@media screen and (max-width: 1202px) {
+  .section{
+    overflow-x:auto;
+  }
+}
+
+@media screen and (max-width: 1180px) {
+  .tb-res{
+    overflow-x:auto;
+    width: 90%;
+    margin: auto;
+    table-layout: fixed;
+  }
+  .head {
+  overflow-x:auto;
+  }
+  .content {
+    overflow-x:auto;
+    }
+}
+
+.sidenav header{
+    color: white;
+    font-size: 35px;
+    padding-top: 25px;
+    padding-left: 20px;
+    user-select: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -288,3 +490,6 @@ label {
 ::-webkit-scrollbar-thumb {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
+
+
+
