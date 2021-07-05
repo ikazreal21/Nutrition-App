@@ -1,43 +1,43 @@
-{% extends 'task/main.html' %} 
+{% extends 'task/main.html' %}
 {% block content %}
-<a href="{% url 'dashboard' %}" class="button">Go Back</a>
-<a href="{% url 'addfood' %}" class="button">Add Food</a>
-<h1>Food List</h1>
-<div class="header">
-  <table cellpadding="0" cellspacing="0" border="0">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Food Name</th>
-      <th scope="col">Calorie</th>
-      <th scope="col">Protien</th>
-      <th scope="col">Fat</th>
-      <th scope="col">Vitamin A</th>
-      <th scope="col">Calcium</th>
-      <th scope="col">Delete</th>
-      <th scope="col">Update</th>
-    </tr>
-  </table>
-</div>
-<div class="tbl-content">
-  <table cellpadding="0" cellspacing="0" border="0">
-    <tr>
-      {% for in in food %}
-      <th scope="row">{{in.id}}</th>
-      <td>{{in.foodname}}</td>
-      <td>{{in.cal}}</td>
-      <td>{{in.protien}}</td>
-      <td>{{in.fat}}</td>
-      <td>{{in.vita}}</td>
-      <td>{{in.calcium}}</td>
-      <td>
-        <a href="{% url 'deleteFood'  in.rndid  %}" class="crud">DELETE</a>
-      </td>
-      <td>
-        <a href="{% url 'updateFood' in.rndid %}" class="crud">EDIT</a>
-      </td>
-    </tr>
-    {% endfor %}
-  </table>
-</div>
-
+  <a href="{% url 'addfood' %}" class="button" style="margin-left: 40px;">Add Food</a>
+  <h1>Food List</h1>
+  <div class="tb-res">
+    <div class="header">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Food Name</th>
+          <th scope="col">Calorie</th>
+          <th scope="col">Protien</th>
+          <th scope="col">Fat</th>
+          <th scope="col">Vitamin A</th>
+          <th scope="col">Calcium</th>
+          <th scope="col">Delete</th>
+          <th scope="col">Update</th>
+        </tr>
+      </table>
+    </div>
+    <div class="tbl-content">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          {% for in in food %}
+            <th scope="row">{{in.id}}</th>
+            <td>{{in.foodname}}</td>
+            <td>{{in.cal}}</td>
+            <td>{{in.protien}}</td>
+            <td>{{in.fat}}</td>
+            <td>{{in.vita}}</td>
+            <td>{{in.calcium}}</td>
+            <td>
+              <a href="{% url 'deleteFood'  in.rndid  %}" class="crud">DELETE</a>
+            </td>
+            <td>
+              <a href="{% url 'updateFood' in.rndid %}" class="crud">EDIT</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
 {% endblock %}
