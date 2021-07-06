@@ -251,6 +251,7 @@ def UpFood(request, pk):
     if request.method == 'POST':
         foodform = NutrientsForm(request.POST, instance=food)
         if foodform.is_valid():
+            foodform.save(commit=False).user = request.user
             foodform.save()
         return redirect('foodlist')
     return render(request, "task/update.html", {'form': foodform})
