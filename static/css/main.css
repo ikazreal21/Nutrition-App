@@ -458,9 +458,30 @@ label {
 
 
 
+.button-desc{
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
 
 
 
+.about {
+  background: rgb(123, 236, 240);
+  border-radius: 2px;
+  display: inline-block;
+  height: 270px;
+  margin: 1rem;
+  position: relative;
+  width: 50rem;
+}
+
+@media screen and (max-width: 800px) {
+  .about{
+    width: 300px;
+    height: 400px;
+  }
+}
 
 
 

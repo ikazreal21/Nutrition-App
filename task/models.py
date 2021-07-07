@@ -4,6 +4,7 @@ import uuid
 
 # Create your models here.
 
+
 class Nutrient(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     foodname = models.CharField(max_length=200)
@@ -12,14 +13,12 @@ class Nutrient(models.Model):
     fat = models.FloatField(max_length=20)
     vita = models.IntegerField()
     calcium = models.IntegerField()
-    rndid = models.CharField(max_length=100, default = uuid.uuid4,
-         editable = False, null=True, blank=True)
-
+    rndid = models.CharField(
+        max_length=100, default=uuid.uuid4, editable=False, null=True, blank=True
+    )
 
     def __str__(self):
         return self.foodname
-    
+
     class Meta:
         ordering = ['foodname']
-
-

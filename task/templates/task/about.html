@@ -1,0 +1,36 @@
+{% extends 'task/main.html' %}
+{% block content %}
+	{% if user.is_authenticated %}
+		<p></p>
+	{% else %}
+		<a href="{% url 'dashboard' %}" class="button" style="margin-left: 40px;">Go Back</a>
+	{% endif %}
+	<div class="center">
+		<div class="about">
+			<h1>Nutrition Calculator</h1>
+			<p style="margin: 40px;">This App is Built Under Django a Python Framework for Web Development and the Entrire Backend is Python Language and the Frontend is HTML CSS and Uses a News API for the Health News.</p>
+			<a href="https://github.com/ikazreal21/Nutrition-App" class="button" ><i class="fab fa-github"></i> Source Code</a>
+		</div>
+		<div class="container">
+			<div class="news-card card-1">
+				<h1>Joaquin Zaki Soriano</h1>
+				<h2>Links:</h2>
+				<div class="button-desc">
+					<a href="https://github.com/ikazreal21" class="button"><i class="fab fa-github"></i> Github</a>
+					<a href="https://www.facebook.com/zkai.soriano.7/" class="button" style="margin-top: 40px;"><i class="fab fa-facebook"></i> Facebook</a>
+					<a href="http://www.linkedin.com/in/joaquin-zaki-soriano-99b6451b4/" class="button" style="margin-top: 40px;"><i class="fab fa-linkedin"></i> LinkedIn</a>
+					<a href="mailto:joaquinzaki@tutanota.com" class="button" style="margin: 40px;"><i class="far fa-envelope"></i> Email</a>
+				</div>
+			</div>
+			<div class="news-card card-1">
+				<h1>Kenneth <br>Agsaoay</h1>
+				<h2>Links:</h2>
+				<div class="button-desc">
+					<a href="https://github.com/kemoxxx" class="button"><i class="fab fa-github"></i> Github</a>
+					<a href="https://www.facebook.com/knthgsy" class="button" style="margin-top: 40px;"><i class="fab fa-facebook"></i> Facebook</a>
+					<a href="mailto:fernandezkenneth24@gmail.com" class="button" style="margin: 40px;"><i class="far fa-envelope"></i> Email</a>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

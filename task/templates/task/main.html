@@ -16,7 +16,7 @@
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
         crossorigin="anonymous"
         />
-        <link rel="icon" href="{% static '/image/favicon.ico' %}" type="image/x-icon">
+        <link rel="icon" href="{% static '/image/favicons.ico' %}" type="image/x-icon">
         <title>Nutrition App</title>
       </head>
       <body>
@@ -31,8 +31,9 @@
               <h1>Dashboard</h1>
               <a href="{% url 'dashboard' %}">Home</a>
               <a href="{% url 'foodlist' %}">Food List</a>
-              <a href="{% url 'food' %}" style="padding-top: 30px;">Calculation</a>
-              <div class="lgout" style="padding-top: 15rem;">
+              <a href="{% url 'food' %}" style="padding-top: 20px;">Calculation</a>
+              <div class="lgout" style="padding-top: 10rem;">
+                <a href="{% url 'about' %}">About</a>
                 <a href="{% url 'logout' %}">Logout, {{request.user}}</a>
               </div>
             </div>
