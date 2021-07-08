@@ -6,15 +6,15 @@
     <div class="header">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <th scope="col">#</th>
+          <th class="hide" scope="col">#</th>
           <th scope="col">Food Name</th>
-          <th scope="col">Calorie</th>
-          <th scope="col">Protien</th>
-          <th scope="col">Fat</th>
-          <th scope="col">Vitamin A</th>
-          <th scope="col">Calcium</th>
-          <th scope="col">Delete</th>
-          <th scope="col">Update</th>
+          <th class="hide" scope="col">Calorie</th>
+          <th class="hide" scope="col">Protien</th>
+          <th class="hide" scope="col">Fat</th>
+          <th class="hide" scope="col">Vitamin A</th>
+          <th class="hide" scope="col">Calcium</th>
+          <th  scope="col">Delete</th>
+          <th  scope="col">Update</th>
         </tr>
       </table>
     </div>
@@ -22,13 +22,13 @@
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
           {% for in in food %}
-            <th scope="row">{{in.id}}</th>
+            <th  class="hide" scope="row">{{in.id}}</th>
             <td>{{in.foodname}}</td>
-            <td>{{in.cal}}</td>
-            <td>{{in.protien}}</td>
-            <td>{{in.fat}}</td>
-            <td>{{in.vita}}</td>
-            <td>{{in.calcium}}</td>
+            <td class="hide" >{{in.cal}}</td>
+            <td class="hide" >{{in.protien}}</td>
+            <td class="hide" >{{in.fat}}</td>
+            <td class="hide" >{{in.vita}}</td>
+            <td class="hide" >{{in.calcium}}</td>
             <td>
               <a href="{% url 'deleteFood'  in.rndid  %}" class="crud">DELETE</a>
             </td>
