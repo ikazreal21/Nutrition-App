@@ -5,5 +5,4 @@
 ##### Login
 
 ##### News API
-
 ##### Responsiveness(Under Development)
