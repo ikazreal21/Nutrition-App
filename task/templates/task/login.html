@@ -5,9 +5,9 @@
 		<form action="" method="POST">
 			{% csrf_token %}
 			<label>User Name: </label>
-			<input type="text" name="username">
+			<input type="text" name="username" required>
 			<label>Password: </label>
-			<input type="password" name="password">
+			<input type="password" name="password" required>
 			<div class="btn-flex">
 				<button type="submit" class="btn">Login</button>
 				<button type="reset" class="btn">Reset</button>
