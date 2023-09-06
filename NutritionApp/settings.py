@@ -12,12 +12,12 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from pathlib import Path
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
-load_dotenv()
+# load_dotenv()
 
-DATABASE_URL = database_url = os.environ.get('DATABASE_URL')
-PASSWORD = database_url = os.environ.get('PASSWORD')
+# DATABASE_URL = database_url = os.environ.get('DATABASE_URL')
+# PASSWORD = database_url = os.environ.get('PASSWORD')
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -31,9 +31,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-gyww!tz8e7_+s0@9*qo%-jp(r4@4hg2slet04nfnr^21mvx+(2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "nutrition-app-pup.herokuapp.com"]
+ALLOWED_HOSTS = ["127.0.0.1", "nutrition-caculator-f18a736213f7.herokuapp.com"]
 
 # ALLOWED_HOSTS = []
 
@@ -92,7 +92,9 @@ DATABASES = {
 
 import dj_database_url
 
-DATABASES['default'] = dj_database_url.parse(DATABASE_URL, conn_max_age=600)
+# DATABASES['default'] = dj_database_url.parse(DATABASE_URL, conn_max_age=600)
+DATABASES['default'] = dj_database_url.parse("postgres://vhrviowsokhwvu:52ac44a3c1fff7cf4d49308651b26f726f11231e7fd641fbdb1de45f3655b8ad@ec2-34-236-199-229.compute-1.amazonaws.com:5432/d81mcs18ekrnvu", conn_max_age=600)
+
 
 
 # Password validation
@@ -150,4 +152,4 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'zakijoaquin21@gmail.com'
-EMAIL_HOST_PASSWORD = PASSWORD
+EMAIL_HOST_PASSWORD = 'artndyuvmmgofmmo'
